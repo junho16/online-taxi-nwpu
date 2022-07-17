@@ -1,0 +1,16 @@
+server:
+  port: 9092
+
+devices:
+  bean:
+    url: tcp://218.201.45.7:1883
+    file_name: /car.json
+    product_id: hlcv91wiJ7
+
+mqtt:
+  username: "ecnu"
+  password: "ecnu"
+  url: tcp://36.137.214.49:1883
+  keepAliveInterval: 600
+  qos: 1
+  clientId: wjh1

@@ -1,0 +1,7 @@
+server:
+  port: 9092
+
+init:
+  bean:
+    taxi_file_name: /taxi.json
+    user_file_name: /user.json
