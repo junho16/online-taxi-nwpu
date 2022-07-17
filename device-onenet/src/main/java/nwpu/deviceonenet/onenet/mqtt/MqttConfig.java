@@ -1,4 +1,4 @@
-package nwpu.car.onenet.mqtt;
+package nwpu.deviceonenet.onenet.mqtt;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,7 +25,6 @@ public class MqttConfig {
 
     @Value("${mqtt.qos}")
     private int qos;
-
 
 
 }

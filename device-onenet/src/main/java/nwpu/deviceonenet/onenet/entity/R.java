@@ -1,4 +1,4 @@
-package nwpu.car.onenet.entity;
+package nwpu.deviceonenet.onenet.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,10 +1,10 @@
-package nwpu.car.api;
+package nwpu.deviceonenet.api;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.onenet.studio.acc.sdk.OpenApi;
 import com.onenet.studio.acc.sdk.interfaces.OpenApiCallback;
-import nwpu.car.api.dto.GeoLocationStructDTO;
+import nwpu.deviceonenet.api.dto.GeoLocationStructDTO;
 
 import java.lang.Exception;
 import java.lang.Integer;

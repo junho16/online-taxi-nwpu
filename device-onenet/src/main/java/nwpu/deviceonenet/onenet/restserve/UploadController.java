@@ -1,6 +1,6 @@
-package nwpu.car.onenet.restserve;
+package nwpu.deviceonenet.onenet.restserve;
 
-import nwpu.car.onenet.entity.R;
+import nwpu.deviceonenet.onenet.entity.R;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;

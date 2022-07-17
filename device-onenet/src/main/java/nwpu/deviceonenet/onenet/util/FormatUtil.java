@@ -1,4 +1,4 @@
-package nwpu.car.onenet.util;
+package nwpu.deviceonenet.onenet.util;
 
 import java.text.DecimalFormat;
 

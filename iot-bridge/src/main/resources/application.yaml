@@ -1,0 +1,23 @@
+oneNet:
+#  userConfig:
+#    user_id: "247205"
+#    project_id: "oJTWFD"
+#    access_key: "wvnRbP3vfm12WCMvV/Keo4CILSx6jkCwOmxs+c9G+eZJAvlyMm2BSrwBtkre7UDiJv4x5prjShrnJz+eVE1mMA=="
+  mqttConfig:
+    client_id: "aaa"
+    server_uri: "ssl://183.230.40.96:8883"
+    mqtt_user_name: "MQTTPushDemo"
+    access_key: "PFWZkrTfQilLuTkMhApSdmPZvhF8H2z3X4xR+Nml4Z4="
+    version: "2018-10-31"
+    resource_name: "mqs/MQTTPushDemo"
+    signature_method: "md5"
+    expiration_time: 100
+    mqtt_topic: "pubInfoDemo"
+    mqtt_sub: "subInfoDemo"
+    manual_acks: false
+    clean_session: true
+    auto_reconnect: true
+    ca_crt_filepath: "/mqca/certificate.pem"
+    timeout: 30
+    keepalive: 60
+iotDeviceConfig_filename: /iotdeviceconfig.json

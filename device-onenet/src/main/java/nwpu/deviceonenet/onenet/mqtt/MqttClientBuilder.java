@@ -1,4 +1,4 @@
-package nwpu.car.onenet.mqtt;
+package nwpu.deviceonenet.onenet.mqtt;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;

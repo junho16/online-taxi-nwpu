@@ -1,4 +1,4 @@
-package nwpu.car.api.dto;
+package nwpu.deviceonenet.api.dto;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.AllArgsConstructor;

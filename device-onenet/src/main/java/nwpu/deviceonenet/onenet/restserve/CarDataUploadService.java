@@ -1,12 +1,11 @@
-package nwpu.car.onenet.restserve;
+package nwpu.deviceonenet.onenet.restserve;
 
 import com.onenet.studio.acc.sdk.OpenApi;
 import lombok.extern.slf4j.Slf4j;
-import nwpu.car.api.CarOpenApiExtention;
-import nwpu.car.api.dto.GeoLocationStructDTO;
-import nwpu.car.onenet.util.FormatUtil;
+import nwpu.deviceonenet.api.CarOpenApiExtention;
+import nwpu.deviceonenet.api.dto.GeoLocationStructDTO;
+import nwpu.deviceonenet.onenet.util.FormatUtil;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.concurrent.ConcurrentHashMap;
