@@ -6,8 +6,7 @@
     <modules>
         <module>device-onenet</module>
         <module>iot-bridge</module>
-        <module>online-taxiMeta</module>
-        <module>online-taxiMeta-cps</module>
+        <module>online-taxi</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

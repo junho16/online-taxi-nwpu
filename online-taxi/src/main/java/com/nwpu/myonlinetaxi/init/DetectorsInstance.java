@@ -7,10 +7,13 @@ import com.nwpu.myonlinetaxi.entity.meta.PassengerMeta;
 import com.nwpu.myonlinetaxi.util.JsonUtil;
 import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author Junho
@@ -23,19 +26,18 @@ public class DetectorsInstance {
     @Value("${init.bean.detector_file_name}")
     private String detectionFileName;
 
-    private static List<DetectorMeta> detectorList;
-
-    private DetectorsInstance(){
-    }
-
     /**
      *  init crossing detector
      * @return
      */
-    @PostConstruct
-    private void initDetectorList() {
+    @Bean("detectorMap")
+    private ConcurrentHashMap<String , DetectorMeta> initDetectorMap() {
+        ConcurrentHashMap<String , DetectorMeta> map = new ConcurrentHashMap<>();
         List<DetectorMeta> list = JSONObject.parseArray(JsonUtil.readJsonFile(detectionFileName), DetectorMeta.class);
-        detectorList = list;
+        for(DetectorMeta detectorMeta : list){
+            map.put(detectorMeta.getDetector_id() , detectorMeta);
+        }
+        return map;
     }
 
 }
