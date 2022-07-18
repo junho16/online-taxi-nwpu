@@ -6,6 +6,14 @@ package com.nwpu.myonlinetaxi.service;
  */
 public interface DisTanceService {
 
+    /**
+     * 计算两个经纬度之间的距离
+     * @param startLon
+     * @param startLat
+     * @param endLon
+     * @param endLat
+     * @return
+     */
     public double calcDistance(double startLon, double startLat, double endLon, double endLat);
 
 }
