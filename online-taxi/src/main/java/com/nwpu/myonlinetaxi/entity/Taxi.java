@@ -1,24 +1,33 @@
 package com.nwpu.myonlinetaxi.entity;
 
+import com.nwpu.myonlinetaxi.entity.Position;
+import com.nwpu.myonlinetaxi.entity.meta.TaxiMeta;
 import lombok.Data;
 
-/**
- * @author Junho
- * @date 2022/7/16 16:33
- */
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 public class Taxi {
 
-    private String taxi_id;
+    private final int traceLimit = 100;
 
-    private double lon;
-
-    private double lat;
+    private TaxiMeta taxiMeta;
 
     /**
-     * 网约车状态
-     * 0:等待接客  1:正在前往接客  2:送客
+     * 记录其轨迹
      */
-    private int state;
+    private List<Position> trace;
 
+    public List<Position> getTrace() {
+        if(this.trace.size() > traceLimit){
+            this.trace.clear();
+        }
+        return trace;
+    }
+
+    public Taxi(TaxiMeta taxiMeta){
+        this.taxiMeta = taxiMeta;
+        this.trace = new ArrayList<>();
+    }
 }

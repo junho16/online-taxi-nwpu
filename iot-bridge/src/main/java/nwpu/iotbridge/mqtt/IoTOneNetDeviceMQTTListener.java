@@ -41,24 +41,21 @@ public class IoTOneNetDeviceMQTTListener implements IMqttMessageListener {
          */
         JSONObject iotMessageJson = JSONObject.parseObject(iotMessage);
         String messageType = iotMessageJson.getString("messageType");
-        log.info("topic: {} , message: {}" , topic , iotMessage);
         try {
             //转发仅需要的消息
             if ("notify".equals(messageType)) {
                 //区分事件/属性
                 if ("property".equals(iotMessageJson.get("notifyType"))) {
-                    log.info("属性变化！");
-//                    ioTOneNetBridge.sendDevicePropertyToCPS(iotMessage);
-//                    ioTOneNetBridge.sendDevicePropertyToCPS(iotMessage);
+                    ioTOneNetBridge.sendDevicePropertyToCPS(iotMessage);
                 } else if ("event".equals(iotMessageJson.get("notifyType"))) {
-//                    ioTOneNetBridge.sendDeviceEventToCPS(iotMessage);
+                    log.debug("收到事件");
                 }
             } else if ("lifeCycle".equals(messageType)) {
-//                ioTOneNetBridge.sendDevicePropertyToCPS(iotMessage);
+                log.debug("设备生命周期");
             } else {
                 //区分消息为位置上报
                 if (iotMessageJson.getString("type") != null) {
-//                    ioTOneNetBridge.sendDevicePropertyToCPS(iotMessage);
+                    log.debug("其他上报信息");
                 } else {
                     log.debug("收到IOT消息：队列名：{}；消息内容：{}", topic, iotMessage);
                 }
@@ -71,7 +68,6 @@ public class IoTOneNetDeviceMQTTListener implements IMqttMessageListener {
 
     /**
      * 接收到mqtt消息方法
-     *
      * @param topic       主题
      * @param mqttMessage mqtt消息
      * @throws Exception 异常
@@ -87,11 +83,6 @@ public class IoTOneNetDeviceMQTTListener implements IMqttMessageListener {
         SimpleDateFormat slf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String time = slf.format(at);
 
-//        logger.debug("MQTT消息详情：time = " + time + ",msg id: " + msgId + ",topic: " + topic + ", body: " + body);
-//        //将物联网设备消息转发至CPS端
-//        this.forwardIoTDeviceMessageToCPS(topic, body);
-
-//      =.= FIXME 暂时只处理车辆的
         JSONObject bodyObj = JSONObject.parseObject(body);
         if(bodyObj.get("productId").equals("hlcv91wiJ7")){
             //将物联网设备消息转发至CPS端

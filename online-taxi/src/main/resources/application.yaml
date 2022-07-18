@@ -1,7 +1,28 @@
 server:
-  port: 9092
-
+  port: 9097
 init:
   bean:
     taxi_file_name: /taxi.json
-    user_file_name: /user.json
+    passenger_file_name: /passenger.json
+    detector_file_name: /detector.json
+
+spring:
+  kafka:
+    bootstrap-servers: 172.16.20.64:9092,172.16.20.64:9093
+    producer:
+      retries: 0
+      batch-size: 16384
+      buffer-memory: 33554432
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: 1
+    consumer:
+      auto-commit-interval: 1S
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: device_property_persistence
+topic:
+  oneNetBridge:
+    deviceProperty: topic.oneNetBridge.deviceProperty
