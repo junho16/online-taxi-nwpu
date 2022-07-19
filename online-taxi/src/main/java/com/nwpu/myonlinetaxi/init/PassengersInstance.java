@@ -1,11 +1,15 @@
 package com.nwpu.myonlinetaxi.init;
 
 import com.alibaba.fastjson.JSONObject;
+import com.nwpu.myonlinetaxi.dao.PassengerMongoDao;
+import com.nwpu.myonlinetaxi.dao.TaxiMongoDao;
 import com.nwpu.myonlinetaxi.entity.meta.PassengerMeta;
 import com.nwpu.myonlinetaxi.util.JsonUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -14,6 +18,16 @@ import java.util.List;
  */
 @Component
 public class PassengersInstance {
+
+    @Resource
+    PassengerMongoDao passengerMongoDao;
+
+    private static PassengerMongoDao passengerdao;
+
+    @PostConstruct
+    public void initMongo(){
+        passengerdao = passengerMongoDao;
+    }
 
     //用户json文件名
     private static String passengerFileName;
@@ -46,6 +60,9 @@ public class PassengersInstance {
     private static void initUserList() {
         List<PassengerMeta> list = JSONObject.parseArray(JsonUtil.readJsonFile(passengerFileName), PassengerMeta.class);
         passengerMetaList = list;
+        for(PassengerMeta passengerMeta : list){
+            passengerdao.savePassenger(passengerMeta);
+        }
     }
 
 }

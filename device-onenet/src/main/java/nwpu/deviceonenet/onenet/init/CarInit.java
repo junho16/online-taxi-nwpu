@@ -52,7 +52,7 @@ public class CarInit {
                             .devKey(device.getString("name"))
                             .accessKey(device.getString("sec_key"))
                             .build();
-                    openApiMap.put((String) device.get("car_id"), openApi);
+                    openApiMap.put((String) device.get("taxi_id"), openApi);
                 } catch (Exception e) {
                     e.printStackTrace();
                     log.error("网约车OpenApi创建异常：productId：{}，deviceName：{}，sec_key：{}", productId, device.getString("name"), device.getString("sec_key"));

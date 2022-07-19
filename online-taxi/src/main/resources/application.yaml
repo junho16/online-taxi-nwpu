@@ -7,6 +7,10 @@ init:
     detector_file_name: /detector.json
 
 spring:
+  data:
+    mongodb:
+      port: 27017
+      database: test
   kafka:
     bootstrap-servers: 172.16.20.64:9092,172.16.20.64:9093
     producer:
@@ -26,3 +30,8 @@ spring:
 topic:
   oneNetBridge:
     deviceProperty: topic.oneNetBridge.deviceProperty
+
+amap:
+  driving:
+    baseurl: https://restapi.amap.com/v3/direction/driving?key=2a12bf8fbb2286dee6e02bdf05ea785a
+

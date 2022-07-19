@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author Junho
@@ -50,20 +51,25 @@ public class OTKafkaConsumer {
         log.info("message: {}" , message) ;
         if(!StringUtils.isBlank(message)){
             JSONObject msgJson = JSONObject.parseObject(message);
+            log.info(msgJson.toJSONString());
             String deviceName = (String) msgJson.get("deviceName");
             JSONObject posObj = msgJson.getJSONObject("data").getJSONObject("params").getJSONObject("geoLocation").getJSONObject("value");
             try{
-                if(TaxisInstance.getTaxiMap().contains(deviceName)){
+                if(TaxisInstance.getTaxiMap().containsKey(deviceName)){
                     Taxi taxi = TaxisInstance.getTaxiMap().get(deviceName);
-                    taxi.getTaxiMeta().setLon((double)posObj.get("lon"));
-                    taxi.getTaxiMeta().setLat((double)posObj.get("lat"));
-                    taxi.getTrace().add(new Position((double)posObj.get("lon") , (double)posObj.get("lat")));
+                    Double taxi_lon = Double.parseDouble(posObj.get("lon")+"");
+                    Double taxi_lat = Double.parseDouble(posObj.get("lat")+"");
+                    taxi.getTaxiMeta().setLon(taxi_lon);
+                    taxi.getTaxiMeta().setLat(taxi_lat);
+                    taxi.getTrace().add(new Position(taxi_lon , taxi_lat));
+
+                    //TODO-存一份到MongoDb
 
                     /**
                      * 判断车是否在某个路口探测范围之内 如是 则计算距离路口的距离 计算出速度 并给出建议 （信号灯？）
                      */
                     //获取距离当前网约车最近的设备
-                    DetectorMeta detectorMeta = crossingService.getMinDisDetector((double)posObj.get("lon") , (double)posObj.get("lat"));
+                    DetectorMeta detectorMeta = crossingService.getMinDisDetector(taxi_lon, taxi_lat);
 
                     //计算当前网约车的速度
                     double speed = taxiService.getSpeed(taxi);

@@ -1,12 +1,16 @@
 package com.nwpu.myonlinetaxi.init;
 
 import com.alibaba.fastjson.JSONObject;
+import com.nwpu.myonlinetaxi.dao.TaxiMongoDao;
 import com.nwpu.myonlinetaxi.entity.Taxi;
 import com.nwpu.myonlinetaxi.entity.meta.TaxiMeta;
 import com.nwpu.myonlinetaxi.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -17,6 +21,17 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 @Slf4j
 public class TaxisInstance {
+
+
+    @Resource
+    TaxiMongoDao taxiMongoDao;
+
+    private static TaxiMongoDao taxidao;
+
+    @PostConstruct
+    public void initMongo(){
+        taxidao = taxiMongoDao;
+    }
 
     //网约车json文件名
     private static String taxiFileName;
@@ -50,7 +65,9 @@ public class TaxisInstance {
         taxiMap = new ConcurrentHashMap<>();
         List<TaxiMeta> list = JSONObject.parseArray(JsonUtil.readJsonFile(taxiFileName), TaxiMeta.class);
         for(TaxiMeta taxiMeta : list){
-            taxiMap.put(taxiMeta.getTaxi_id() , new Taxi(taxiMeta));
+            taxidao.saveTaxi(taxiMeta);
+            //注意 此处需要使用Taxi_name（DEV_CAR_1） 因为onenet传过来的是设备名称
+            taxiMap.put(taxiMeta.getTaxi_name() , new Taxi(taxiMeta));
         }
     }
 }

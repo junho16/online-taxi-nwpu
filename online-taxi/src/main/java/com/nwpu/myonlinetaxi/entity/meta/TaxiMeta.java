@@ -1,6 +1,8 @@
 package com.nwpu.myonlinetaxi.entity.meta;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -9,6 +11,8 @@ import java.util.List;
  * @date 2022/7/16 16:33
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class TaxiMeta {
 
     private String taxi_id;

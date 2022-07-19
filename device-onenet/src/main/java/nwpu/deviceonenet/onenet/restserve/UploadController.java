@@ -19,9 +19,9 @@ public class UploadController {
     CarDataUploadService carDataUploadService;
 
     @RequestMapping("/upload")
-    public R uploadPos(@RequestParam("id") String id, @RequestParam("lon") double lon, @RequestParam("lat") double lat) {
+    public R uploadPos(@RequestParam("taxi_id") String taxi_id, @RequestParam("lon") double lon, @RequestParam("lat") double lat) {
         try{
-            carDataUploadService.uploadPos(id, lon, lat);
+            carDataUploadService.uploadPos(taxi_id, lon, lat);
         }catch (Exception e){
             return R.error(500, null);
         }

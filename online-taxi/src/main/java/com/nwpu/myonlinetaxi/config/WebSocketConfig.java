@@ -1,4 +1,4 @@
-package com.nwpu.myonlinetaxi.websocket;
+package com.nwpu.myonlinetaxi.config;
 
 
 import org.springframework.context.annotation.Bean;

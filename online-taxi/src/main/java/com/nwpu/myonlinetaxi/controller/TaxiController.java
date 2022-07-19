@@ -2,9 +2,13 @@ package com.nwpu.myonlinetaxi.controller;
 
 import com.nwpu.myonlinetaxi.entity.Position;
 import com.nwpu.myonlinetaxi.entity.R;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.nwpu.myonlinetaxi.service.TaxiService;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import java.lang.reflect.Method;
+import java.util.Map;
 
 /**
  * @author Junho
@@ -14,6 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/taxi")
 public class TaxiController {
 
+    @Resource
+    TaxiService taxiService;
+
     /**
      * 上传车辆位置信息
      * @param Pos
@@ -21,6 +28,19 @@ public class TaxiController {
      */
     @RequestMapping("/uploacPos")
     public R uploadPos(@RequestParam("id")String id , @RequestParam("position")Position Pos){
+        //TODO-调用device-onenet中上传服务
         return null;
+    }
+
+    @RequestMapping(method = RequestMethod.GET , value = "/driving")
+    public R reqDriving(
+            @RequestParam("startLon")Double startLon,
+            @RequestParam("startLat")Double startLat,
+            @RequestParam("endLon")Double endLon,
+            @RequestParam("endLat")Double endLat) {
+
+        R res = taxiService.reqDriving(startLon , startLat , endLon , endLat);
+        return res;
+
     }
 }
