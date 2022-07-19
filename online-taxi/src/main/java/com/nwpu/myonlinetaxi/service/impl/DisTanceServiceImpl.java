@@ -30,9 +30,15 @@ public class DisTanceServiceImpl implements DisTanceService {
 
     }
 
+    /**
+     * 获得某个位置半径为raidus的范围的经纬度
+     * @param latStr
+     * @param lngStr
+     * @param raidus
+     * @return
+     */
     @Override
     public Map<Object, Object> getAround(String latStr, String lngStr, String raidus) {
-
 
         Map<Object,Object> map = new HashMap<Object,Object>();
 
@@ -66,6 +72,14 @@ public class DisTanceServiceImpl implements DisTanceService {
 
     }
 
+    /**
+     * 获得指定范围内一个随机位置
+     * @param MinLon
+     * @param MaxLon
+     * @param MinLat
+     * @param MaxLat
+     * @return
+     */
     @Override
     public Position getRandomPos(double MinLon, double MaxLon, double MinLat, double MaxLat) {
         Random random = new Random();

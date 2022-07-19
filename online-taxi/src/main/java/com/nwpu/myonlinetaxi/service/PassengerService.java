@@ -16,4 +16,5 @@ public interface PassengerService {
      */
     public R callTaxi(String id);
 
+    public R changeState(String taxi_id, Integer state);
 }

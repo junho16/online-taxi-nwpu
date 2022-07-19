@@ -25,7 +25,7 @@ public class TaxiMeta {
 
     /**
      * 网约车状态
-     * 0:等待接客  1:正在前往接客  2:送客
+     * 0:等待接客  1:送客
      */
     private int state;
 }

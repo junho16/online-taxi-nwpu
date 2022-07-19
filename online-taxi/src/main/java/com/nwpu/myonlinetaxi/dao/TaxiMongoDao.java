@@ -16,6 +16,9 @@ public interface TaxiMongoDao {
 
     public void changeLonLat(String taxi_id , double lon, double lat);
 
+    public TaxiMeta getTaxi(String taxi_id);
+
+
 //    public void changeMeter(String carid,double meter);
 //
 //    public void changeTime(String carid,long time);

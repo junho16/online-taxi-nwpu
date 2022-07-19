@@ -18,4 +18,5 @@ public interface TaxiService {
     public R reqDriving( Double startLon , Double startLat ,
          Double endLon , Double endLat );
 
+    public R changeState(String taxi_id, Integer state);
 }

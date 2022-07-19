@@ -2,6 +2,7 @@ package com.nwpu.myonlinetaxi.service.kafka;
 
 import com.nwpu.myonlinetaxi.algorithm.*;
 import com.alibaba.fastjson.JSONObject;
+import com.nwpu.myonlinetaxi.dao.TaxiMongoDao;
 import com.nwpu.myonlinetaxi.dto.TaxiDto;
 import com.nwpu.myonlinetaxi.entity.Position;
 import com.nwpu.myonlinetaxi.entity.Taxi;
@@ -42,6 +43,9 @@ public class OTKafkaConsumer {
     @Resource
     WebSocketProducer webSocketProducer;
 
+    @Resource
+    TaxiMongoDao taxiMongoDao;
+
     /**
      * 设备消息转发至CPS
      *  判断车是否在某个路口的探测范围之内 如是 则计算距离路口的距离 计算出速度 并给出建议
@@ -59,14 +63,17 @@ public class OTKafkaConsumer {
                     Taxi taxi = TaxisInstance.getTaxiMap().get(deviceName);
                     Double taxi_lon = Double.parseDouble(posObj.get("lon")+"");
                     Double taxi_lat = Double.parseDouble(posObj.get("lat")+"");
+
+                    //在内存中记录一下
                     taxi.getTaxiMeta().setLon(taxi_lon);
                     taxi.getTaxiMeta().setLat(taxi_lat);
                     taxi.getTrace().add(new Position(taxi_lon , taxi_lat));
 
-                    //TODO-存一份到MongoDb
+                    //在mongodb中记录一下
+                    taxiMongoDao.changeLonLat(taxi.getTaxiMeta().getTaxi_id() , taxi.getTaxiMeta().getLon() , taxi.getTaxiMeta().getLat());
 
                     /**
-                     * 判断车是否在某个路口探测范围之内 如是 则计算距离路口的距离 计算出速度 并给出建议 （信号灯？）
+                     * 判断车是否在某个路口探测范围之内 如是 则计算距离路口的距离 计算出速度 并给出建议
                      */
                     //获取距离当前网约车最近的设备
                     DetectorMeta detectorMeta = crossingService.getMinDisDetector(taxi_lon, taxi_lat);
@@ -79,6 +86,7 @@ public class OTKafkaConsumer {
                     if(detectorMeta == null){
                         suggest = "保持速度行驶";
                     }else{
+                        //信号灯此处模拟一下
                         TrafficLight light = TrafficLight.getRandomLight();
                         suggest = Guidance.getSuggest(
                                 (int) disTanceService.calcDistance(

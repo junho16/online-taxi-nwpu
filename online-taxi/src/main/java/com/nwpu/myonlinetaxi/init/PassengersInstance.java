@@ -3,7 +3,9 @@ package com.nwpu.myonlinetaxi.init;
 import com.alibaba.fastjson.JSONObject;
 import com.nwpu.myonlinetaxi.dao.PassengerMongoDao;
 import com.nwpu.myonlinetaxi.dao.TaxiMongoDao;
+import com.nwpu.myonlinetaxi.entity.Taxi;
 import com.nwpu.myonlinetaxi.entity.meta.PassengerMeta;
+import com.nwpu.myonlinetaxi.entity.meta.TaxiMeta;
 import com.nwpu.myonlinetaxi.util.JsonUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author Junho
@@ -24,11 +27,6 @@ public class PassengersInstance {
 
     private static PassengerMongoDao passengerdao;
 
-    @PostConstruct
-    public void initMongo(){
-        passengerdao = passengerMongoDao;
-    }
-
     //用户json文件名
     private static String passengerFileName;
 
@@ -37,32 +35,35 @@ public class PassengersInstance {
         passengerFileName = passenger_file_name;
     }
 
-    private static List<PassengerMeta> passengerMetaList;
+    private static ConcurrentHashMap<String , PassengerMeta> passengerMap;
 
     private PassengersInstance(){
     }
 
-    public static List<PassengerMeta> getUserList() {
-        if (passengerMetaList == null) {
-            initUserList();
-        }
-        return passengerMetaList;
+    @PostConstruct
+    public void initPassenger(){
+        passengerdao = passengerMongoDao;
+        initPassengerMap();
     }
 
-    public static boolean isInit(){
-        return passengerMetaList != null;
+    public static ConcurrentHashMap<String , PassengerMeta> getPassengerMap() {
+        if (passengerMap == null) {
+            initPassengerMap();
+        }
+        return passengerMap;
     }
 
     /**
      *  init passenger
      * @return
      */
-    private static void initUserList() {
+    private static void initPassengerMap() {
+        passengerMap = new ConcurrentHashMap<>();
         List<PassengerMeta> list = JSONObject.parseArray(JsonUtil.readJsonFile(passengerFileName), PassengerMeta.class);
-        passengerMetaList = list;
+
         for(PassengerMeta passengerMeta : list){
             passengerdao.savePassenger(passengerMeta);
+            passengerMap.put(passengerMeta.getPassenger_id() , passengerMeta);
         }
     }
-
 }

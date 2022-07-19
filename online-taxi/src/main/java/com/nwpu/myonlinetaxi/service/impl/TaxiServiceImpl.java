@@ -2,6 +2,7 @@ package com.nwpu.myonlinetaxi.service.impl;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.nwpu.myonlinetaxi.dao.TaxiMongoDao;
 import com.nwpu.myonlinetaxi.entity.Position;
 import com.nwpu.myonlinetaxi.entity.R;
 import com.nwpu.myonlinetaxi.entity.Taxi;
@@ -32,6 +33,9 @@ public class TaxiServiceImpl implements TaxiService {
 
     @Resource
     DisTanceService disTanceService;
+
+    @Resource
+    TaxiMongoDao taxiMongoDao;
 
     @Override
     public double getSpeed(Taxi taxi) {
@@ -88,6 +92,19 @@ public class TaxiServiceImpl implements TaxiService {
         }
 
         return R.ok(pathList);
+    }
+
+    @Override
+    public R changeState(String taxi_id, Integer state) {
+        if(state != 1 && state != 0){
+            return R.error(500 , "不存在该状态" );
+        }
+        try{
+            taxiMongoDao.changeState(taxi_id , state);
+            return R.ok(null);
+        }catch (Exception e){
+            return R.error(500 , "更新id为：{} 的车辆的状态失败。" );
+        }
     }
 
 }

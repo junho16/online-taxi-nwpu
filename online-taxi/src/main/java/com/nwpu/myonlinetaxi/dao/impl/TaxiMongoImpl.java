@@ -1,6 +1,7 @@
 package com.nwpu.myonlinetaxi.dao.impl;
 
 import com.nwpu.myonlinetaxi.dao.TaxiMongoDao;
+import com.nwpu.myonlinetaxi.entity.meta.PassengerMeta;
 import com.nwpu.myonlinetaxi.entity.meta.TaxiMeta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -48,6 +49,14 @@ public class TaxiMongoImpl implements TaxiMongoDao {
         update.set("lon", lon);
         update.set("lat", lat);
         mongoTemplate.upsert(query, update, "taxiMeta");
+    }
+
+    @Override
+    public TaxiMeta getTaxi(String taxi_id) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("taxi_id").is(taxi_id));
+        List<TaxiMeta> list = mongoTemplate.find(query , TaxiMeta.class);
+        return list.size() == 0 ? null : list.get(0);
     }
 
 }

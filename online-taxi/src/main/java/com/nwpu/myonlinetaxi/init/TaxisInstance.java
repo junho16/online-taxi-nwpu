@@ -29,8 +29,9 @@ public class TaxisInstance {
     private static TaxiMongoDao taxidao;
 
     @PostConstruct
-    public void initMongo(){
+    public void initTaxis(){
         taxidao = taxiMongoDao;
+        initTaxiMap();
     }
 
     //网约车json文件名
@@ -44,10 +45,6 @@ public class TaxisInstance {
     private static ConcurrentHashMap<String , Taxi> taxiMap;
 
     private TaxisInstance(){
-    }
-
-    public static boolean isInit(){
-        return taxiMap != null;
     }
 
     public static ConcurrentHashMap<String , Taxi> getTaxiMap() {
