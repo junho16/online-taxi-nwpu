@@ -1,4 +1,4 @@
-package com.nwpu.myonlinetaxi.mqtt;
+package com.nwpu.myonlinetaxi.crontask;
 
 import com.nwpu.myonlinetaxi.entity.enums.PassengerState;
 import com.nwpu.myonlinetaxi.entity.meta.PassengerMeta;

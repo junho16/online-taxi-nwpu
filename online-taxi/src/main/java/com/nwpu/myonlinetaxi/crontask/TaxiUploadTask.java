@@ -1,14 +1,10 @@
-package com.nwpu.myonlinetaxi.mqtt;
+package com.nwpu.myonlinetaxi.crontask;
 
 import com.alibaba.fastjson.JSONObject;
-import com.nwpu.myonlinetaxi.entity.meta.PassengerMeta;
 import com.nwpu.myonlinetaxi.entity.meta.TaxiMeta;
-import com.nwpu.myonlinetaxi.init.PassengersInstance;
 import com.nwpu.myonlinetaxi.init.TaxisInstance;
 import com.nwpu.myonlinetaxi.websocket.WebSocketServer;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

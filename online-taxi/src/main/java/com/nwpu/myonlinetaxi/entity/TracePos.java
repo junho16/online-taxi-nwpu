@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
+ * 路径规划结果
  * @author Junho
  * @date 2022/7/21 22:37
  */

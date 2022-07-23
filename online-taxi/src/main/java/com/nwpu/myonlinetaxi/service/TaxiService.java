@@ -15,13 +15,14 @@ import java.util.Map;
  */
 public interface TaxiService {
 
-//    public double getSpeed(Taxi taxi);
-
     public List<TracePos> reqDriving(Double startLon , Double startLat ,
                                      Double endLon , Double endLat );
 
     public void pickPassenger(TaxiMeta taxiMeta);
 
     public void endOrder(TaxiMeta taxiMeta);
+
+//    public double getSpeed(Taxi taxi);
+
 //    public R changeState(String taxi_id, Integer state);
 }

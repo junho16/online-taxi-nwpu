@@ -6,7 +6,7 @@ package com.nwpu.myonlinetaxi.entity.enums;
  */
 public enum PassengerState {
 
-    //空闲可叫车 已叫车 在路上即运动中
+    //0：空闲可叫车 1：已叫车 2：在路上即运动中
     free(0),
     call(1),
     run(2);
