@@ -1,0 +1,13 @@
+[
+  {
+    "detector_id": "detector_1",
+    "detector_name": "新七大道",
+    "lon": "120.45193883",
+    "lat": "31.58461305"
+  },{
+    "detector_id": "detector_2",
+    "detector_name": "北大街",
+    "lon": "124.45193883",
+    "lat": "33.58461305"
+  }
+]

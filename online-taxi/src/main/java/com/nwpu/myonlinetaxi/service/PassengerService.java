@@ -11,10 +11,10 @@ public interface PassengerService {
 
     /**
      * 乘客打车
-     * @param id
+     * @param passenger_id
      * @return
      */
-    public R callTaxi(String id);
+    public void callTaxi(String passenger_id);
 
-    public R changeState(String taxi_id, Integer state);
+//    public R changeState(String taxi_id, Integer state);
 }

@@ -1,5 +1,6 @@
 package com.nwpu.myonlinetaxi.websocket;
 
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
 @Component
+@Data
 @ServerEndpoint("/cps/taxi/ws/{sid}")
 public class WebSocketServer {
 

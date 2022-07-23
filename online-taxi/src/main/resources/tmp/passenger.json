@@ -1,0 +1,16 @@
+[
+  { "passenger_id": "passenger_1", "state": 0 , "lon":"120.459358","lat":"31.581692" },
+  { "passenger_id": "passenger_2", "state": 0 , "lon":"120.450199","lat":"31.598749" },
+  { "passenger_id": "passenger_3", "state": 0 , "lon":"120.457548","lat":"31.603537" },
+  { "passenger_id": "passenger_4", "state": 0 , "lon":"120.424594","lat":"31.578139" },
+  { "passenger_id": "passenger_5", "state": 0 , "lon":"120.440516","lat":"31.577718" },
+  { "passenger_id": "passenger_6", "state": 0 , "lon":"120.43013" ,"lat":"31.578961" }
+]
+[
+  { "passenger_id": "passenger_1", "state": 0 , "lon":"120.459358","lat":"31.581692" },
+  { "passenger_id": "passenger_2", "state": 0 , "lon":"120.450199","lat":"31.598749" },
+  { "passenger_id": "passenger_3", "state": 0 , "lon":"120.457548","lat":"31.603537" },
+  { "passenger_id": "passenger_4", "state": 0 , "lon":"120.424594","lat":"31.578139" },
+  { "passenger_id": "passenger_5", "state": 0 , "lon":"120.440516","lat":"31.577718" },
+  { "passenger_id": "passenger_6", "state": 0 , "lon":"120.43013" ,"lat":"31.578961" }
+]

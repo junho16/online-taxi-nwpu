@@ -21,7 +21,8 @@ public class PassengerMeta {
     private double lat;
 
     /**
-     * 0:未打车   1:已打车
+     * 0:未打车(静止状态)   1:已打车(非静止状态)
+     * 按枚举里的来
      */
     private int state;
 

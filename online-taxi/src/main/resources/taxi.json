@@ -1,24 +1,3 @@
 [
-  {"taxi_id":"taxi_1","taxi_name": "DEV_CAR_1",   "state": 0 ,"lon": "120.452927",  "lat": "31.584141"},
-  {"taxi_id":"taxi_2","taxi_name": "DEV_CAR_2",   "state": 0 ,"lon": "120.459569",  "lat": "31.586746"},
-  {"taxi_id":"taxi_3","taxi_name": "DEV_CAR_3",   "state": 0 ,"lon": "120.44928",   "lat": "31.586764"},
-  {"taxi_id":"taxi_4","taxi_name": "DEV_CAR_4",   "state": 0 ,"lon": "120.458296",  "lat": "31.581776"},
-  {"taxi_id":"taxi_5","taxi_name": "DEV_CAR_5",   "state": 0 ,"lon": "120.453689",  "lat": "31.600482"},
-  {"taxi_id":"taxi_6","taxi_name": "DEV_CAR_6",   "state": 0 ,"lon": "120.449226",  "lat": "31.594971"},
-  {"taxi_id":"taxi_7","taxi_name": "DEV_CAR_7",   "state": 0 ,"lon": "120.44928",   "lat": "31.595053"},
-  {"taxi_id":"taxi_8","taxi_name": "DEV_CAR_8",   "state": 0 ,"lon": "120.456565",  "lat": "31.597429"},
-  {"taxi_id":"taxi_9","taxi_name": "DEV_CAR_9",   "state": 0 ,"lon": "120.453592",  "lat": "31.587454"},
-  {"taxi_id":"taxi_10","taxi_name": "DEV_CAR_10", "state": 0 ,"lon": "120.444172",  "lat": "31.587216"},
-  {"taxi_id":"taxi_11","taxi_name": "DEV_CAR_11", "state": 0 ,"lon": "120.453592",  "lat": "31.587454"},
-  {"taxi_id":"taxi_12","taxi_name": "DEV_CAR_12", "state": 0 ,"lon": "120.45622",   "lat": "31.589337"},
-  {"taxi_id":"taxi_13","taxi_name": "DEV_CAR_13", "state": 0 ,"lon": "120.438585",  "lat": "31.587351"},
-  {"taxi_id":"taxi_14","taxi_name": "DEV_CAR_14", "state": 0 ,"lon": "120.4285",    "lat": "31.584573"},
-  {"taxi_id":"taxi_15","taxi_name": "DEV_CAR_15", "state": 0 ,"lon": "120.427774",  "lat": "31.58014" },
-  {"taxi_id":"taxi_16","taxi_name": "DEV_CAR_16", "state": 0 ,"lon": "120.442795",  "lat": "31.586154"},
-  {"taxi_id":"taxi_17","taxi_name": "DEV_CAR_17", "state": 0 ,"lon": "120.45732",   "lat": "31.588482"},
-  {"taxi_id":"taxi_18","taxi_name": "DEV_CAR_18", "state": 0 ,"lon": "120.463478",  "lat": "31.590255"},
-  {"taxi_id":"taxi_19","taxi_name": "DEV_CAR_19", "state": 0 ,"lon": "120.459129",  "lat": "31.590391"},
-  {"taxi_id":"taxi_20","taxi_name": "DEV_CAR_20", "state": 0 ,"lon": "120.462798",  "lat": "31.58976" },
-  {"taxi_id":"taxi_21","taxi_name": "DEV_CAR_21", "state": 0 ,"lon": "120.458013",  "lat": "31.593479"},
-  {"taxi_id":"taxi_22","taxi_name": "DEV_CAR_22", "state": 0 ,"lon": "120.451272",  "lat": "31.585292"}
+  {"taxi_id":"taxi_1","taxi_name": "DEV_CAR_1",   "state": 0 ,"lon": "120.452927",  "lat": "31.584141" ,  "startPos":{ "lon" : 120.452927,  "lat":  31.584141 } , "endPos":{  "lon" :120.466328,  "lat": 31.581811 }}
 ]

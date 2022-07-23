@@ -3,7 +3,6 @@ package com.nwpu.myonlinetaxi.init;
 import com.alibaba.fastjson.JSONObject;
 import com.nwpu.myonlinetaxi.dao.PassengerMongoDao;
 import com.nwpu.myonlinetaxi.dao.TaxiMongoDao;
-import com.nwpu.myonlinetaxi.entity.Taxi;
 import com.nwpu.myonlinetaxi.entity.meta.PassengerMeta;
 import com.nwpu.myonlinetaxi.entity.meta.TaxiMeta;
 import com.nwpu.myonlinetaxi.util.JsonUtil;
@@ -62,7 +61,7 @@ public class PassengersInstance {
         List<PassengerMeta> list = JSONObject.parseArray(JsonUtil.readJsonFile(passengerFileName), PassengerMeta.class);
 
         for(PassengerMeta passengerMeta : list){
-            passengerdao.savePassenger(passengerMeta);
+//            passengerdao.savePassenger(passengerMeta);
             passengerMap.put(passengerMeta.getPassenger_id() , passengerMeta);
         }
     }
