@@ -8,17 +8,17 @@ import java.util.List;
 
 /**
  * @author Junho
- * @date 2022/7/22 21:28
+ * @date 2022/7/24 15:24
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MqttTaxiDto {
+public class MqttPassengerDto {
 
     private String type;
 
     private Long timeStamp;
 
-    private List<TaxiDto> taxis;
+    private List<PassengerDto> passengers;
 
 }

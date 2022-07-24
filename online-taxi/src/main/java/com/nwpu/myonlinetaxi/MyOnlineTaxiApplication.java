@@ -1,5 +1,6 @@
 package com.nwpu.myonlinetaxi;
 
+import com.nwpu.myonlinetaxi.mqtt.send.MqttFactory;
 import com.onenet.studio.acc.sdk.annotations.ThingsModelConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,6 +11,7 @@ public class MyOnlineTaxiApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(MyOnlineTaxiApplication.class, args);
+        MqttFactory.getInstance();
     }
 
 }

@@ -2,6 +2,7 @@ package com.nwpu.myonlinetaxi.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Random;
 
@@ -10,6 +11,7 @@ import java.util.Random;
  * @date 2022/7/18 19:58
  */
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 public class TrafficLight {
 
@@ -17,6 +19,10 @@ public class TrafficLight {
 
     private Integer leftTime;
 
+    public void setTrafficInfo(Integer color , Integer leftTime){
+        this.color = color;
+        this.leftTime = leftTime;
+    }
     /**
      * 随机一个信号灯状态 1：绿灯   3：红灯    剩余时间：1 ~ 60s
      * @return

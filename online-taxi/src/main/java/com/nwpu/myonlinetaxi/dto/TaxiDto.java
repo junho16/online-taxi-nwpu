@@ -9,31 +9,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class TaxiDto {
 
-    //信号灯信息 便于调试
-    private Integer leftTime;
-    private Integer lightColor;
+    private String tid;
 
-    private String taxi_id; // 车辆Id
+    private Double lon;
 
-    private Long timeStamp;
+    private Double lat;
 
-    private double lon;
+    private int state;
 
-    private double lat;
+    private boolean isCrossing;
 
-    private double speed;
+    private Double speed;
 
     private String suggest;
 
-    private int gpsType; // gcj82:1
-
-    public TaxiDto(String taxi_id, Long timeStamp, double lon, double lat, double speed, String suggest, int gpsType) {
-        this.taxi_id = taxi_id;
-        this.timeStamp = timeStamp;
-        this.lon = lon;
-        this.lat = lat;
-        this.speed = speed;
-        this.suggest = suggest;
-        this.gpsType = gpsType;
-    }
 }

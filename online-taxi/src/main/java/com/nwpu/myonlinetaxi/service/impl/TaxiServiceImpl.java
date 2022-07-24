@@ -102,6 +102,7 @@ public class TaxiServiceImpl implements TaxiService {
         taxiMeta.getTrace().clear();
         taxiMeta.getTrace().addAll(reqDriving(taxiMeta.getLon() , taxiMeta.getLat() , taxiMeta.getStartPos().getLon() , taxiMeta.getStartPos().getLat()));
         passengerMeta.setState(PassengerState.free.getState());
+
      }
 
 //    @Override

@@ -35,3 +35,23 @@ amap:
   driving:
     baseurl: https://restapi.amap.com/v3/direction/driving?key=2a12bf8fbb2286dee6e02bdf05ea785a
 
+mqtt:
+#  urlFrontSuffix: "tcp://xx.xx.xx.xx:1883";
+  urlFrontSuffix: tcp://118.195.244.224:1883
+  clienId: wjh_onlinetaxi
+  taxiTopic: "/taxi"
+  passengerTopic: "/passenger"
+
+  tian:
+    username: "ecnu"
+    password: "ecnu"
+    url: tcp://36.137.214.49:1883
+    keepAliveInterval: 600
+    qos: 1
+    clientId: wjh_online_taxi
+
+#如果修改此处设备编号 json文件中要一并修改
+light_sn:    00000305,00000490,00000415,00000121,00000371,00000404,00000263
+
+#探测器的探测范围
+detector_range: 500

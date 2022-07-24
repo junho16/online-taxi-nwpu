@@ -40,7 +40,6 @@ public class TaxiThread implements Runnable {
     public void run() {
         while (true){
             uploadPos();
-
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
