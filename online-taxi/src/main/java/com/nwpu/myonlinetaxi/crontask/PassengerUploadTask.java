@@ -46,19 +46,19 @@ public class PassengerUploadTask {
 
         MqttPassengerDto mqttPassengerDto = new MqttPassengerDto("passenger" , System.currentTimeMillis() , list);
         String res = JSONObject.toJSONString(mqttPassengerDto);
-        log.info(res);
+        log.info("passengers ==》 {}" , res);
         MqttSendMsg.sendMqttMsg(passengerTopic , res);
 
 //        log.error(res);
-//        CopyOnWriteArraySet<WebSocketServer> webSocketSet =
-//                WebSocketServer.getWebSocketSet();
-//        webSocketSet.forEach(c -> {
-//            try {
-//                if(c.getSid().equals("user"))
-//                    c.sendMessage(res);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        });
+        CopyOnWriteArraySet<WebSocketServer> webSocketSet =
+                WebSocketServer.getWebSocketSet();
+        webSocketSet.forEach(c -> {
+            try {
+                if(c.getSid().equals("user"))
+                    c.sendMessage(res);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }

@@ -22,7 +22,7 @@ public class MqttSendMsg {
         // 0:最多一次传送 (只负责传送，发送过后就不管数据的传送情况)
         // 1:至少一次传送 (确认数据交付)
         // 2:正好一次传送 (保证数据交付成功)
-        message.setQos(0);
+        message.setQos(1);
         //  发布消息
         try {
             client.publish(topic, message);

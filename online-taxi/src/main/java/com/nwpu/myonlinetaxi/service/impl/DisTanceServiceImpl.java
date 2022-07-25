@@ -34,7 +34,7 @@ public class DisTanceServiceImpl implements DisTanceService {
      * 获得某个位置半径为raidus的范围的经纬度
      * @param latStr
      * @param lngStr
-     * @param raidus
+     * @param raidus 单位是 m
      * @return
      */
     @Override
@@ -82,7 +82,6 @@ public class DisTanceServiceImpl implements DisTanceService {
      */
     @Override
     public Position getRandomPos(double MinLon, double MaxLon, double MinLat, double MaxLat) {
-        Random random = new Random();
         BigDecimal db = new BigDecimal(Math.random() * (MaxLon - MinLon) + MinLon);
         String lon = db.setScale(6, BigDecimal.ROUND_HALF_UP).toString();// 小数后6位
         db = new BigDecimal(Math.random() * (MaxLat - MinLat) + MinLat);

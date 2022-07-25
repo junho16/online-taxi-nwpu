@@ -62,7 +62,10 @@ public class PassengerServiceImpl implements PassengerService {
             log.info("乘客：{} 申请叫车，为其分配网约车为：{}",passenger_id , taxi.getTaxi_id());
 
             // 获得一个随机位置并规划路径
-            Map<Object , Object> aroundMap = disTanceService.getAround(passengerMeta.getLon()+"" , passengerMeta.getLat()+"" , maxDistance+"");
+            Map<Object , Object> aroundMap = disTanceService.getAround(
+                passengerMeta.getLon()+"" ,
+                passengerMeta.getLat()+"" ,
+                maxDistance+"");
             Position targetPos = disTanceService.getRandomPos(
                     Double.parseDouble((String) aroundMap.get("minLng")) ,
                     Double.parseDouble((String) aroundMap.get("maxLng")) ,

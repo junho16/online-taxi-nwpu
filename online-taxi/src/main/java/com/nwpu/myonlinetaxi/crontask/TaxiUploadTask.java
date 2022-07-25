@@ -13,6 +13,7 @@ import com.nwpu.myonlinetaxi.mqtt.tian.TianMqttClient;
 import com.nwpu.myonlinetaxi.mqtt.tian.config.MqttTianConfig;
 import com.nwpu.myonlinetaxi.service.CrossingService;
 import com.nwpu.myonlinetaxi.service.DisTanceService;
+import com.nwpu.myonlinetaxi.websocket.WebSocketServer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -20,9 +21,11 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
  * 定时上报网约车信息
@@ -48,9 +51,11 @@ public class TaxiUploadTask {
 
     @Scheduled(cron = "*/1 * * * * ?")
     public void taxiUpload(){
+        List<String> wsTes = new ArrayList<>();
         List<TaxiDto> list = new ArrayList<>();
         Map<String , TaxiMeta> map = TaxisInstance.getTaxiMap();
         for(Map.Entry<String , TaxiMeta> entry : map.entrySet()){
+            wsTes.add(entry.getValue().toString());
             DetectorMeta detectorMeta = crossingService.getMinDisDetector(entry.getValue().getLon() , entry.getValue().getLat());
             String suggest = "按照原速度行驶";
             boolean isCrossing = false;
@@ -80,19 +85,19 @@ public class TaxiUploadTask {
         }
         MqttTaxiDto mqttTaxiDto = new MqttTaxiDto("taxi" , System.currentTimeMillis() , list);
         String res = JSONObject.toJSONString(mqttTaxiDto);
-        log.info(res);
+        log.info("taxi ==》 {}" , res);
         MqttSendMsg.sendMqttMsg(taxiTopic , res);
 
 //        log.error(res);
-//        CopyOnWriteArraySet<WebSocketServer> webSocketSet =
-//                WebSocketServer.getWebSocketSet();
-//        webSocketSet.forEach(c -> {
-//            try {
-//                if(c.getSid().equals("taxi"))
-//                    c.sendMessage(res);
-//             } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        });
+        CopyOnWriteArraySet<WebSocketServer> webSocketSet =
+                WebSocketServer.getWebSocketSet();
+        webSocketSet.forEach(c -> {
+            try {
+                if(c.getSid().equals("taxi"))
+                    c.sendMessage(JSONObject.toJSONString(wsTes));
+             } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }

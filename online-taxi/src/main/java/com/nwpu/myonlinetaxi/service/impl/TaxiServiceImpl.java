@@ -14,6 +14,7 @@ import com.nwpu.myonlinetaxi.init.PassengersInstance;
 import com.nwpu.myonlinetaxi.service.DisTanceService;
 import com.nwpu.myonlinetaxi.service.TaxiService;
 import com.nwpu.myonlinetaxi.util.FormatUtil;
+import com.nwpu.myonlinetaxi.util.GpsUtil;
 import javafx.geometry.Pos;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -74,7 +75,12 @@ public class TaxiServiceImpl implements TaxiService {
                     String[] polylines = o.getString("polyline").split(";");
                     for(String polylinesItem : polylines){
                         String[] posArr = polylinesItem.split(",");
-                        pathList.add(new TracePos(Double.parseDouble(posArr[0]) , Double.parseDouble(posArr[1]) , speed));
+//                        pathList.add(
+//                            new TracePos(Double.parseDouble(posArr[0]) , Double.parseDouble(posArr[1]) , speed)
+//                        );
+                        pathList.add(
+                            GpsUtil.calGCJ02toWGS84(new TracePos(Double.parseDouble(posArr[0]) , Double.parseDouble(posArr[1]) , speed))
+                        );
                     }
                 }
 
