@@ -20,6 +20,7 @@ import com.onenet.studio.acc.sdk.util.OneJsonUtil;
 import javafx.geometry.Pos;
 import lombok.Synchronized;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
@@ -37,8 +38,9 @@ import java.util.Map;
 @Slf4j
 public class PassengerServiceImpl implements PassengerService {
 
-    //只找不超过5km的网约车
-    private final double maxDistance = 5000;
+    //探测器500米范围内
+    @Value("${maxDistance}")
+    private double maxDistance;
 
     @Resource
     TaxiMongoDao taxiMongoDao;
