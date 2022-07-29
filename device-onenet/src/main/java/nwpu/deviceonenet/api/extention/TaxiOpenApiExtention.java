@@ -1,10 +1,10 @@
-package nwpu.deviceonenet.api;
+package nwpu.deviceonenet.api.extention;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.onenet.studio.acc.sdk.OpenApi;
 import com.onenet.studio.acc.sdk.interfaces.OpenApiCallback;
-import nwpu.deviceonenet.api.dto.GeoLocationStructDTO;
+import nwpu.deviceonenet.api.dto.TaxiListStructDTO;
 
 import java.lang.Exception;
 import java.lang.Integer;
@@ -19,7 +19,7 @@ import java.util.Set;
  *
  * {@link OpenApi} 扩展类，该类根据配置的物模型自动生成对应的上报与下发方法，开发者根据这些方法实现相应功能即可
  */
-public class CarOpenApiExtention {
+public class TaxiOpenApiExtention {
     /**
      * 物模型上报格式公共字段-id
      */
@@ -37,19 +37,18 @@ public class CarOpenApiExtention {
 
     private OpenApi openApi;
 
-    public CarOpenApiExtention(OpenApi openApi) {
+    public TaxiOpenApiExtention(OpenApi openApi) {
         this.openApi = openApi;
     }
 
     /**
      * 单个属性功能点上报
      *
-     *  @param geoLocation 标识符为geoLocation的属性功能点的值
+     *  @param taxiList 标识符为taxiList的属性功能点的值
      *  @param timeout 超时时间，单位为毫秒
      */
-    public int geoLocationPropertyUpload(GeoLocationStructDTO geoLocation, long timeout) throws
-            Exception {
-        return this.propertyUpload(timeout, geoLocation);
+    public int taxiListPropertyUpload(TaxiListStructDTO[] taxiList, long timeout) throws Exception {
+        return this.propertyUpload(timeout, taxiList);
     }
 
     /**
@@ -57,20 +56,20 @@ public class CarOpenApiExtention {
      * 该方法会上报参数值不为null的属性
      *
      *  @param timeout 调用超时时间，单位为毫秒
-     *  @param geoLocation 标识符为geoLocation的属性功能点的值
+     *  @param taxiList 标识符为taxiList的属性功能点的值
      */
-    public int propertyUpload(long timeout, GeoLocationStructDTO geoLocation) throws Exception {
+    public int propertyUpload(long timeout, TaxiListStructDTO[] taxiList) throws Exception {
         Map<String, Object> oneJson = new HashMap<>();
         long now = System.currentTimeMillis();
         String id = String.valueOf(now);
         oneJson.put(ONEJSON_ID_KEY, id);
         oneJson.put(ONEJSON_VERSION_KEY, ONEJSON_VERSION_VAL);
         Map<String, Object> params = new HashMap<>();
-        if (!Objects.isNull(JSON.toJSON(geoLocation))) {
-            Map<String, Object> val1 = new HashMap<>();
-            val1.put("value", JSON.toJSON(geoLocation));
-            val1.put("time", now);
-            params.put("geoLocation", val1);
+        if (!Objects.isNull(JSON.toJSON(taxiList))) {
+                Map<String, Object> val1 = new HashMap<>();
+                val1.put("value", JSON.toJSON(taxiList));
+                val1.put("time", now);
+                params.put("taxiList", val1);
         }
         oneJson.put("params", params);
         String oneJsonStr = JSON.toJSONString(oneJson);

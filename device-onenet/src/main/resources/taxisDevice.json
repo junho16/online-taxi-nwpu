@@ -1,0 +1,29 @@
+[
+  {
+    "group_id" : 1,
+    "created_time": "2022-7-17T10:32:41.728+0800",
+    "desc": "网约车组-1",
+    "name": "DEV_TAXI_CAR_1",
+    "node_type": "DIRECTLY_CONNECT_DEVICE",
+    "protocol": "MQTT",
+    "sec_key": "05X6qx2/0/jvMKyoZup3AoiRloZmAnLAt17yDfxYE/E="
+  },
+  {
+    "group_id" : 2,
+    "created_time": "2022-7-17T10:32:41.728+0800",
+    "desc": "网约车组-2",
+    "name": "DEV_TAXI_CAR_2",
+    "node_type": "DIRECTLY_CONNECT_DEVICE",
+    "protocol": "MQTT",
+    "sec_key": "D+IxeEyZyIRg1slb4aPh4E8d1XgLBw5Hz8LwOfAnmbk="
+  },
+  {
+    "group_id" : 3,
+    "created_time": "2022-7-17T10:32:41.728+0800",
+    "desc": "网约车组-3",
+    "name": "DEV_TAXI_CAR_3",
+    "node_type": "DIRECTLY_CONNECT_DEVICE",
+    "protocol": "MQTT",
+    "sec_key": "qC8pSr34LtTE1ClnncxtnDB+MCCC6E+e7maE3uiTfew="
+  }
+]

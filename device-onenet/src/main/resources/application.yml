@@ -1,16 +1,79 @@
 server:
-  port: 9099
+  port: 8444
+
+init:
+  bean:
+    taxi_file_name: /taxi.json
+    passenger_file_name: /passenger.json
+
+#spring:
+#  data:
+#    mongodb:
+#      port: 27017
+#      database: test
+#  kafka:
+#    bootstrap-servers: 172.16.20.64:9092,172.16.20.64:9093
+#    producer:
+#      retries: 0
+#      batch-size: 16384
+#      buffer-memory: 33554432
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      acks: 1
+#    consumer:
+#      auto-commit-interval: 1S
+#      auto-offset-reset: earliest
+#      enable-auto-commit: false
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      group-id: device_property_persistence
+#topic:
+#  oneNetBridge:
+#    deviceProperty: topic.oneNetBridge.deviceProperty
+
+amap:
+  driving:
+    baseurl: https://restapi.amap.com/v3/direction/driving?key=2a12bf8fbb2286dee6e02bdf05ea785a
+
+#mqtt:
+#  #  urlFrontSuffix: "tcp://xx.xx.xx.xx:1883";
+#  urlFrontSuffix: tcp://118.195.244.224:1883
+#  clienId: wjh_onlinetaxi
+#  taxiTopic: "taxi"
+#  passengerTopic: "passenger"
+#
+#  tian:
+#    username: "ecnu"
+#    password: "ecnu"
+#    url: tcp://36.137.214.49:1883
+#    keepAliveInterval: 600
+#    qos: 1
+#    clientId: tian_online_taxi
+
+##如果修改此处设备编号 json文件中要一并修改
+#light_sn: 00000305,00000490,00000415,00000121,00000371,00000404,00000263
+
+##探测器的探测范围
+#detector_range: 500
+
+#网约车随机的目标地址范围 以及 分配网约车的最大距离
+maxDistance: 5000
 
 devices:
   bean:
     url: tcp://218.201.45.7:1883
-    file_name: /car.json
-    product_id: hlcv91wiJ7
+    taxi:
+      file_name: /taxisDevice.json
+      product_id: hlcv91wiJ7
+    passenger:
+      file_name: /passengerDevice.json
+      product_id: WjfSpBgLzo
 
-mqtt:
-  username: "ecnu"
-  password: "ecnu"
-  url: tcp://36.137.214.49:1883
-  keepAliveInterval: 600
-  qos: 1
-  clientId: wjh1
+
+#mqtt:
+#  username: "ecnu"
+#  password: "ecnu"
+#  url: tcp://36.137.214.49:1883
+#  keepAliveInterval: 600
+#  qos: 1
+#  clientId: wjh1

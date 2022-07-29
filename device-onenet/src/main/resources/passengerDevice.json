@@ -1,0 +1,11 @@
+[
+  {
+    "group_id" : 1 ,
+    "created_time": "2022-7-17T10:32:41.728+0800",
+    "desc": "乘客组-1",
+    "name": "DEV_TAXI_PASSENGER_1",
+    "node_type": "DIRECTLY_CONNECT_DEVICE",
+    "protocol": "MQTT",
+    "sec_key": "3csamJJEZ5LGF/prWK/fcDX2Rzqhra+9vVClyqVgPXI="
+  }
+]

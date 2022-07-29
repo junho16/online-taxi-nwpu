@@ -1,0 +1,91 @@
+{
+  "version": "1.0",
+  "profile": {
+    "industryId": "1",
+    "sceneId": "14",
+    "categoryId": "314",
+    "productId": "WjfSpBgLzo"
+  },
+  "properties": [
+    {
+      "identifier": "passengerList",
+      "name": "乘客序列",
+      "functionType": "u",
+      "accessMode": "rw",
+      "desc": "",
+      "dataType": {
+        "type": "array",
+        "specs": {
+          "length": 10,
+          "type": "struct",
+          "specs": [
+            {
+              "identifier": "passenger_id",
+              "name": "乘客Id",
+              "dataType": {
+                "type": "string",
+                "specs": {
+                  "length": 256
+                }
+              }
+            },
+            {
+              "identifier": "lon",
+              "name": "乘客经度",
+              "dataType": {
+                "type": "double",
+                "specs": {
+                  "min": "-180",
+                  "max": "180",
+                  "unit": "",
+                  "step": ""
+                }
+              }
+            },
+            {
+              "identifier": "lat",
+              "name": "乘客纬度",
+              "dataType": {
+                "type": "double",
+                "specs": {
+                  "min": "-90",
+                  "max": "90",
+                  "unit": "",
+                  "step": ""
+                }
+              }
+            },
+            {
+              "identifier": "state",
+              "name": "乘客状态",
+              "dataType": {
+                "type": "int32",
+                "specs": {
+                  "min": "0",
+                  "max": "5",
+                  "unit": "",
+                  "step": ""
+                }
+              }
+            },
+            {
+              "identifier": "passenger_group",
+              "name": "乘客组别",
+              "dataType": {
+                "type": "int32",
+                "specs": {
+                  "min": "0",
+                  "max": "500",
+                  "unit": "",
+                  "step": ""
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "events": [],
+  "services": []
+}

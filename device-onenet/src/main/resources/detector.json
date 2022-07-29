@@ -1,0 +1,74 @@
+[
+  {
+    "detector_id": "detector_1",
+    "detector_name": "DEV_DETECTION_1",
+    "detector_sn": "00000304",
+    "light_sn": "00000305",
+    "light_pos":{
+      "lon": 120.4575301,
+      "lat": 31.5827704
+    }
+  },
+  {
+    "detector_id": "detector_2",
+    "detector_name": "DEV_DETECTION_2",
+    "detector_sn": "00000489",
+    "light_sn": "00000490",
+    "light_pos":{
+      "lon": 120.4520492553711,
+      "lat": 31.59716796875
+    }
+  },
+  {
+    "detector_id": "detector_3",
+    "detector_name": "DEV_DETECTION_3",
+    "detector_sn": "00000414",
+    "light_sn": "00000415",
+    "light_pos":{
+      "lon": 120.45234680175781,
+      "lat": 31.58602523803711
+    }
+  },
+  {
+    "detector_id": "detector_4",
+    "detector_name": "DEV_DETECTION_4",
+    "detector_sn": "00000120",
+    "light_sn": "00000121",
+    "light_pos":{
+      "lon": 120.43379974365234,
+      "lat": 31.582260131835938
+    }
+  },
+  {
+    "detector_id": "detector_5",
+    "detector_name": "DEV_DETECTION_5",
+    "detector_sn": "00000370",
+    "light_sn": "00000371",
+    "light_pos":{
+      "lon": 120.46003723144531,
+      "lat": 31.586782455444336
+    }
+  },
+  {
+    "detector_id": "detector_6",
+    "detector_name": "DEV_DETECTION_6",
+    "detector_sn": "00000403",
+    "light_sn": "00000404",
+    "light_pos":{
+      "lon": 120.46109771728516,
+      "lat": 31.592029571533203
+    }
+  },
+  {
+    "detector_id": "detector_7",
+    "detector_name": "DEV_DETECTION_7",
+    "detector_sn": "00000262",
+    "light_sn": "00000263",
+    "light_pos":{
+      "lon": 120.4583065,
+      "lat": 31.5890251
+    }
+  }
+]
+
+
