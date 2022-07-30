@@ -63,6 +63,8 @@ public class TaxiMeta {
      */
     private boolean direction;
 
+    private int taxi_group;
+
     public TaxiMeta(String taxi_id, String taxi_name, int state, double lon, double lat, Position startPos, Position endPos) {
         this.taxi_id = taxi_id;
         this.taxi_name = taxi_name;

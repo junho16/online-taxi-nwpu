@@ -8,10 +8,13 @@ import org.eclipse.paho.client.mqttv3.IMqttMessageListener;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author Junho
@@ -23,6 +26,12 @@ public class IoTOneNetDeviceMQTTListener implements IMqttMessageListener {
 
     @Resource
     private IoTOneNetBridge ioTOneNetBridge;
+
+    @Resource
+    Set<String> product_passenger_set;
+
+    @Resource
+    Set<String> product_taxi_set;
 
     /**
      * 将获取到（获取方式不限于监听iot的设备mq、扫描iot北向接口等手段）的设备属性信息 转发到北向队列
@@ -84,9 +93,10 @@ public class IoTOneNetDeviceMQTTListener implements IMqttMessageListener {
         String time = slf.format(at);
 
         JSONObject bodyObj = JSONObject.parseObject(body);
-        if(bodyObj.get("productId").equals("hlcv91wiJ7")){
+
+        if(product_passenger_set.contains(bodyObj.get("productId")) || product_taxi_set.contains(bodyObj.get("productId"))){
             //将物联网设备消息转发至CPS端
-            log.info("MQTT消息详情：time = " + time + ",msg id: " + msgId + ",topic: " + topic + ", body: " + body);
+//            log.info("MQTT消息详情：time = " + time + ",msg id: " + msgId + ",topic: " + topic + ", body: " + body);
             this.forwardIoTDeviceMessageToCPS(topic, body);
         }
     }

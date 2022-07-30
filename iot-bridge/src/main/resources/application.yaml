@@ -3,7 +3,7 @@ server:
 
 oneNet:
   mqttConfig:
-    client_id: "aaa"
+    client_id: "taxi"
     server_uri: "ssl://183.230.40.96:8883"
     mqtt_user_name: "MQTTPushDemo"
     access_key: "PFWZkrTfQilLuTkMhApSdmPZvhF8H2z3X4xR+Nml4Z4="
@@ -41,3 +41,9 @@ spring:
 topic:
  oneNetBridge:
   deviceProperty: topic.oneNetBridge.deviceProperty
+
+devices:
+  bean:
+    productId:
+      passenger: WjfSpBgLzo
+      taxi: hlcv91wiJ7

@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Slf4j
 @Component
 @Data
-@ServerEndpoint("/cps/taxi/ws/{sid}")
+@ServerEndpoint("/cps/taxi/onenet/ws/{sid}")
 public class WebSocketServer {
 
     //静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。

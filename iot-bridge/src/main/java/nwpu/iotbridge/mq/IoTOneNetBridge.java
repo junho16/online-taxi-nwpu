@@ -17,6 +17,7 @@ import com.github.cm.heclouds.onenet.studio.api.exception.IotClientException;
 import com.github.cm.heclouds.onenet.studio.api.exception.IotServerException;
 import lombok.extern.slf4j.Slf4j;
 import nwpu.iotbridge.exception.SendMessageException;
+import nwpu.iotbridge.util.JsonUtil;
 import org.codehaus.plexus.util.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +31,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -51,6 +53,12 @@ public class IoTOneNetBridge {
     @Value("${iotDeviceConfig_filename}")
     public String iotDeviceConfigFilename;
 
+    @Resource
+    Set<String> product_passenger_set;
+
+    @Resource
+    Set<String> product_taxi_set;
+
     /**
      * 将OneNet收到的网约车位置信息转发至CPS
      *
@@ -71,9 +79,11 @@ public class IoTOneNetBridge {
                     // 判断iot消息的的属性名称是否存在于元数据中。
                     try {
                         // 拼装 属性值 和 时间
-                        JSONObject msgValJson = msgParams.getJSONObject(msgKey).getJSONObject("value");
-                        msgValJson.put("uploadTime", msgParams.getJSONObject(msgKey).getString("time"));
-                        kafkaProducer.send(topicDevicePropertyTopic, iotEventMessage);
+//                        String valueStr = JSON.toJSONString(msgParams.getJSONObject(msgKey).get("value"));
+                        JSONObject obj = (JSONObject) msgParams.get(msgKey);
+                        obj.put("type" , product_taxi_set.contains(eventMsgJson.getString("productId")) ? "taxi" : "passenger");
+                        kafkaProducer.send(topicDevicePropertyTopic, JSONObject.toJSONString(obj));
+//                        kafkaProducer.send(topicDevicePropertyTopic, iotEventMessage);
                     } catch (Exception e) {
                         //记录不支持字段异常信息，目前只处理设备需要的映射属性名称，其他属性做以记录
                         log.warn("发送 属性消息 至 CPS 异常，异常信息：{}", e.getMessage());

@@ -2,15 +2,15 @@ server:
   port: 9097
 init:
   bean:
-    taxi_file_name: /taxi.json
-    passenger_file_name: /passenger.json
+#    taxi_file_name: /taxi.json
+#    passenger_file_name: /passenger.json
     detector_file_name: /detector.json
 
 spring:
-  data:
-    mongodb:
-      port: 27017
-      database: test
+#  data:
+#    mongodb:
+#      port: 27017
+#      database: test
   kafka:
     bootstrap-servers: 172.16.20.64:9092,172.16.20.64:9093
     producer:
@@ -31,9 +31,9 @@ topic:
   oneNetBridge:
     deviceProperty: topic.oneNetBridge.deviceProperty
 
-amap:
-  driving:
-    baseurl: https://restapi.amap.com/v3/direction/driving?key=2a12bf8fbb2286dee6e02bdf05ea785a
+#amap:
+#  driving:
+#    baseurl: https://restapi.amap.com/v3/direction/driving?key=2a12bf8fbb2286dee6e02bdf05ea785a
 
 mqtt:
 #  urlFrontSuffix: "tcp://xx.xx.xx.xx:1883";
@@ -56,5 +56,5 @@ light_sn:    00000305,00000490,00000415,00000121,00000371,00000404,00000263
 #探测器的探测范围
 detector_range: 500
 
-#网约车随机的目标地址范围 以及 分配网约车的最大距离
-maxDistance: 5000
+##网约车随机的目标地址范围 以及 分配网约车的最大距离
+#maxDistance: 5000

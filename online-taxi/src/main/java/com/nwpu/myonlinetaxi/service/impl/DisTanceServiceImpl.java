@@ -93,6 +93,6 @@ public class DisTanceServiceImpl implements DisTanceService {
 //        创建GeodeticCalculator，调用计算方法，传入坐标系、经纬度用于计算距离
         GeodeticCurve geoCurve = new GeodeticCalculator().calculateGeodeticCurve(ellipsoid, gpsFrom, gpsTo);
         return geoCurve.getEllipsoidalDistance();
-    } 
+    }
 
 }

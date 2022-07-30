@@ -8,6 +8,7 @@ import nwpu.deviceonenet.onenet.entity.enums.TaxiState;
 import nwpu.deviceonenet.onenet.entity.meta.PassengerMeta;
 import nwpu.deviceonenet.onenet.entity.meta.TaxiMeta;
 import nwpu.deviceonenet.onenet.init.PassengersInstance;
+import nwpu.deviceonenet.onenet.init.PathInstance;
 import nwpu.deviceonenet.onenet.service.DisTanceService;
 import nwpu.deviceonenet.onenet.service.TaxiService;
 import nwpu.deviceonenet.onenet.util.FormatUtil;
@@ -20,6 +21,7 @@ import org.springframework.web.client.RestTemplate;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Junho
@@ -35,14 +37,16 @@ public class TaxiServiceImpl implements TaxiService {
     @Resource
     RestTemplate restTemplate;
 
-    @Resource
-    DisTanceService disTanceService;
-
     @Override
     public List<TracePos> reqDriving(Double startLon, Double startLat, Double endLon, Double endLat) {
 
-        List<TracePos> pathList = new ArrayList<>();
+        Map<String , List<TracePos> > pathMap = PathInstance.getPathMap();
+        String pathKey = startLon + " " + startLat + " " + endLon + " " + endLat;
+        if(pathMap.containsKey(pathKey)){
+            return pathMap.get(pathKey);
+        }
 
+        List<TracePos> pathList = new ArrayList<>();
         try{
             String parameters = "&origin=" +
                     FormatUtil.getPosFormatDouble(startLon) + "," +
@@ -85,6 +89,8 @@ public class TaxiServiceImpl implements TaxiService {
             e.printStackTrace();
             log.error("请求路径失败，异常为：{}" , e.getMessage());
         }
+
+        pathMap.put(pathKey , pathList);
         return pathList;
     }
 

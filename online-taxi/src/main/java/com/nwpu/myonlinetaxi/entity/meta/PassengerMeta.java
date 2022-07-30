@@ -26,4 +26,5 @@ public class PassengerMeta {
      */
     private int state;
 
+    private int passenger_group;
 }

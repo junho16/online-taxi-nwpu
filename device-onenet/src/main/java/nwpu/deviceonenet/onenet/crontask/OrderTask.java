@@ -26,8 +26,10 @@ public class OrderTask {
 
     /**
      * 10s的间隔时间选一个幸运用户并让其叫车
+     * 每个小时的10分30秒选一个幸运用户
      */
-    @Scheduled(cron = "*/10 * * * * ?")
+//    @Scheduled(cron = "*/10 * * * * ?")
+    @Scheduled(cron = "30 10 * * * ?")
     public void callTaxi(){
 
         Map<String , PassengerMeta> passengerMap = PassengersInstance.getPassengerMap();
